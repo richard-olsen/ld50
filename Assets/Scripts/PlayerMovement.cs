@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public float runModifier = 1.5f;
     private bool run = false;
 
+    public int TileX { get => Mathf.RoundToInt(transform.position.x - 0.5f); }
+    public int TileY { get => Mathf.RoundToInt(transform.position.y - 0.5f); }
+
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -25,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         float runMod = run ? runModifier : 1.0f;
-        body.MovePosition(body.position + movementDirection * movementSpeed * runMod * Time.deltaTime);
+        body.MovePosition(body.position + movementDirection.normalized * movementSpeed * runMod * Time.deltaTime);
     }
 
     // Update is called once per frame
