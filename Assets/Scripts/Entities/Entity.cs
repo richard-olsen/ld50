@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    protected int hp;
+    public int hp;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +15,5 @@ public class Entity : MonoBehaviour
     void Update()
     {
         
-    }
-    void OnCollisionEnter2D(Collision collision)
-    {
-        if (collision.collider.GetComponent<Projectile>())
-        {
-            hp -= 1;
-        }
-        if (collision.collider.GetComponent<Melee>())
-        {
-            hp -= 2;
-        }
     }
 }
