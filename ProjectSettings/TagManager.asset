@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pathfinder
   - Enemy Target
+  - Temp Tag
   layers:
   - Default
   - TransparentFX

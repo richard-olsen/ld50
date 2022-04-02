@@ -611,10 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99917d8f80342e443810134bc1804b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathfinder: {fileID: 1163515891}
-  player: {fileID: 1514555008}
-  nuclearBase: {fileID: 2041558092}
-  enemyMovement: {fileID: 0}
 --- !u!114 &1017665393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64767,7 +64763,7 @@ GameObject:
   - component: {fileID: 1163515891}
   m_Layer: 0
   m_Name: Pathfinding
-  m_TagString: pathfinder
+  m_TagString: Pathfinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
