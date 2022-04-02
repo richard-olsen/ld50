@@ -41,4 +41,9 @@ public class PlayerMovement : MonoBehaviour
         movementDirection.x = x;
         movementDirection.y = y;
     }
+
+    public Vector2 getPosition()
+    {
+        return transform.position;
+    }
 }
