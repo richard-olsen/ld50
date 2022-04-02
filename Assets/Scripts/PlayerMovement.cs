@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movementDirection = Vector2.zero;
     public float movementSpeed = 2.0f;
+    public float runModifier = 1.5f;
+    private bool run = false;
 
     void Awake()
     {
@@ -22,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        body.MovePosition(body.position + movementDirection * movementSpeed * Time.deltaTime);
+        float runMod = run ? runModifier : 1.0f;
+        body.MovePosition(body.position + movementDirection * movementSpeed * runMod * Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
+        run = Input.GetAxis("Run") > 0.5f;
 
         movementDirection.x = x;
         movementDirection.y = y;
