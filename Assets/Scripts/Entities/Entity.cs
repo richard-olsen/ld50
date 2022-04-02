@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public int hp;
+    private int hp = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,18 @@ public class Entity : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void giveHealth(int hp)
+    {
+        this.hp += hp;
+    }
+    public void damage(int hp)
+    {
+        this.hp -= hp;
+        // Do death event here
+        // Temporary
+        if (this.hp <= 0)
+            Destroy(gameObject);
     }
 }

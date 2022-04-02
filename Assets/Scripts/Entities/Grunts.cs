@@ -7,7 +7,7 @@ public class Grunts : Entity
     // Start is called before the first frame update
     void Start()
     {
-        hp = 3;
+        giveHealth(3);
     }
 
     // Update is called once per frame

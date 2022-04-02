@@ -20,15 +20,23 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField]
     private int bulletCount;            // Bullet count per shot, think like a shot gun
+    public int BulletCount { get => bulletCount; }
     [SerializeField]
     private float spread;               // The spread of bullets
 
     [SerializeField]
-    private int maxAmmo;
+    private int maxReserveAmmo;
     [SerializeField]
     private int maxClipAmmo;
     [SerializeField]
     private int ammoInClip;
+    [SerializeField]
+    private int ammoInReserve;
+    public bool IsLoaded { get => ammoInClip > 0; }
+
+    [SerializeField]
+    private float reloadTime;
+    private float reloadTimer = 0;
 
     protected void spawnProjectiles(float direction)
     {
@@ -46,8 +54,34 @@ public abstract class Gun : MonoBehaviour
     public abstract void beginShooting(float direction);
     public abstract void endShooting();
 
-    private IEnumerator fireSemiAuto()
+    public void reload()
     {
-        yield return null;
+        reloadTimer = reloadTime;
+    }
+
+    private void doReload()
+    {
+        if (reloadTimer > 0 && ammoInReserve > 0)
+        {
+            reloadTimer -= Time.deltaTime;
+
+            if (reloadTimer <= 0)
+            {
+                int bulletsNeeded = maxClipAmmo - ammoInClip;
+                int count = Mathf.Min(bulletsNeeded, ammoInReserve);
+                ammoInReserve -= count;
+                ammoInClip += count;
+            }
+        }
+    }
+
+    protected void takeAmmo(int count)
+    {
+        ammoInClip -= count;
+    }
+
+    void Update()
+    {
+        doReload();
     }
 }

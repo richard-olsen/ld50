@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoShot : Gun
+public class SemiShot : Gun
 {
     private bool hasCoroutineFinished = true;
     private bool isShooting = false;
@@ -27,9 +27,15 @@ public class AutoShot : Gun
     {
         while (isShooting && IsLoaded)
         {
-            takeAmmo(1);
-            spawnProjectiles(playerArm.getAngle());
-            yield return new WaitForSeconds(FireRate);
+            for (int i = 0; i < 3; i++)
+            {
+                takeAmmo(1);
+                spawnProjectiles(playerArm.getAngle());
+                if (!IsLoaded)
+                    break;
+                yield return new WaitForSeconds(FireRate);
+            }
+            yield return new WaitForSeconds(BurstRate - FireRate);
         }
         hasCoroutineFinished = true;
         yield return null;
