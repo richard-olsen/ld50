@@ -6,8 +6,9 @@ public class PlayerArm : MonoBehaviour
 {
     [SerializeField]
     private Camera camera;
+
     [SerializeField]
-    private Transform bulletSpawn;
+    private Gun gun;
 
     float angle;
 
@@ -21,34 +22,31 @@ public class PlayerArm : MonoBehaviour
         
     }
 
-    public IEnumerator shootFullAuto()
-    {
-        while (shootGun)
-        {
-            GameObject bulletObject = GameObject.Instantiate(bulletSpawnTemplate);
-            bulletObject.transform.position = bulletSpawn.position;
-            Bullet bullet = bulletObject.GetComponent<Bullet>();
-            bullet.setDirection(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
-            yield return new WaitForSeconds(0.1f);
-        }
-        yield return null;
-    }
-    public IEnumerator shootSemiAuto()
-    {
-        while (shootGun)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                GameObject bulletObject = GameObject.Instantiate(bulletSpawnTemplate);
-                bulletObject.transform.position = bulletSpawn.position;
-                Bullet bullet = bulletObject.GetComponent<Bullet>();
-                bullet.setDirection(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
-                yield return new WaitForSeconds(0.1f);
-            }
-            yield return new WaitForSeconds(0.4f);
-        }
-        yield return null;
-    }
+    //public IEnumerator shootFullAuto()
+    //{
+    //    while (shootGun)
+    //    {
+    //        GameObject bulletObject = GameObject.Instantiate(bulletSpawnTemplate);
+    //        bulletObject.transform.position = bulletSpawn.position;
+    //        Bullet bullet = bulletObject.GetComponent<Bullet>();
+    //        bullet.setDirection(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
+    //        yield return new WaitForSeconds(0.1f);
+    //    }
+    //    yield return null;
+    //}
+    //public IEnumerator shootSemiAuto()
+    //{
+    //    while (shootGun)
+    //    {
+    //        for (int i = 0; i < 3; i++)
+    //        {
+                
+    //            yield return new WaitForSeconds(0.1f);
+    //        }
+    //        yield return new WaitForSeconds(0.4f);
+    //    }
+    //    yield return null;
+    //}
 
     // Update is called once per frame
     void Update()
@@ -68,12 +66,13 @@ public class PlayerArm : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            shootGun = true;
-            StartCoroutine(shootSemiAuto());
+            if (!(gun is null))
+            {
+                gun.beginShooting(angle);
+            }
         }
         if (Input.GetMouseButtonUp(1))
         {
-            shootGun = false;
         }
     }
 }
