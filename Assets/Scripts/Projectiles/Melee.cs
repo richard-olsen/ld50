@@ -15,12 +15,4 @@ public class Melee : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision2D collision)
-    {
-        Collider2D collObj = collision.collider;
-        if (collObj.GetComponent<Entity>())
-        {
-            //collObj.gameObject.GetComponent<Entity>().hp -= 2;
-        }
-    }
 }
