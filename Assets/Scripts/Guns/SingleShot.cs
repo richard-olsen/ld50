@@ -7,8 +7,9 @@ public class SingleShot : Gun
     float timer = 0;
     public override void beginShooting(float direction)
     {
-        if (timer < Time.time)
+        if (timer < Time.time && IsLoaded)
         {
+            takeAmmo(1);
             spawnProjectiles(direction);
             timer = Time.time + FireRate;
         }
@@ -17,11 +18,5 @@ public class SingleShot : Gun
     {
 
     }
-
-    void Awake()
-    {
-        
-    }
-
 
 }

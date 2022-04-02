@@ -9,7 +9,7 @@ public class AutoShot : Gun
 
     public override void beginShooting(float direction)
     {
-        if (isShooting || !hasCoroutineFinished)
+        if (isShooting || !hasCoroutineFinished || !IsLoaded)
             return;
 
         isShooting = true;
@@ -25,8 +25,9 @@ public class AutoShot : Gun
 
     private IEnumerator fire()
     {
-        while (isShooting)
+        while (isShooting && IsLoaded)
         {
+            takeAmmo(1);
             spawnProjectiles(playerArm.getAngle());
             yield return new WaitForSeconds(FireRate);
         }

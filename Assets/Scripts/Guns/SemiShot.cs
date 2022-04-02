@@ -9,7 +9,7 @@ public class SemiShot : Gun
 
     public override void beginShooting(float direction)
     {
-        if (isShooting || !hasCoroutineFinished)
+        if (isShooting || !hasCoroutineFinished || !IsLoaded)
             return;
 
         isShooting = true;
@@ -25,11 +25,14 @@ public class SemiShot : Gun
 
     private IEnumerator fire()
     {
-        while (isShooting)
+        while (isShooting && IsLoaded)
         {
             for (int i = 0; i < 3; i++)
             {
+                takeAmmo(1);
                 spawnProjectiles(playerArm.getAngle());
+                if (!IsLoaded)
+                    break;
                 yield return new WaitForSeconds(FireRate);
             }
             yield return new WaitForSeconds(BurstRate - FireRate);

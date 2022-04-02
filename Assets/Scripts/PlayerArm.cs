@@ -14,39 +14,11 @@ public class PlayerArm : MonoBehaviour
 
     public GameObject bulletSpawnTemplate;
 
-    bool shootGun = false;
-
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    //public IEnumerator shootFullAuto()
-    //{
-    //    while (shootGun)
-    //    {
-    //        GameObject bulletObject = GameObject.Instantiate(bulletSpawnTemplate);
-    //        bulletObject.transform.position = bulletSpawn.position;
-    //        Bullet bullet = bulletObject.GetComponent<Bullet>();
-    //        bullet.setDirection(new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
-    //        yield return new WaitForSeconds(0.1f);
-    //    }
-    //    yield return null;
-    //}
-    //public IEnumerator shootSemiAuto()
-    //{
-    //    while (shootGun)
-    //    {
-    //        for (int i = 0; i < 3; i++)
-    //        {
-                
-    //            yield return new WaitForSeconds(0.1f);
-    //        }
-    //        yield return new WaitForSeconds(0.4f);
-    //    }
-    //    yield return null;
-    //}
 
     // Update is called once per frame
     void Update()
@@ -64,18 +36,25 @@ public class PlayerArm : MonoBehaviour
 
         angle *= Mathf.Deg2Rad;
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetButtonDown("Shoot"))
         {
             if (!(gun is null))
             {
                 gun.beginShooting(angle);
             }
         }
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetButtonUp("Shoot"))
         {
             if (!(gun is null))
             {
                 gun.endShooting();
+            }
+        }
+        if (Input.GetButtonDown("Reload"))
+        {
+            if (!(gun is null))
+            {
+                gun.reload();
             }
         }
     }
