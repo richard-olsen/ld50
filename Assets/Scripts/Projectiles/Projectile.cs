@@ -26,11 +26,13 @@ public class Projectile : MonoBehaviour
     {
         body.MovePosition(body.position + direction * speed * Time.deltaTime);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision2D collision)
     {
-        if (collision.collider.GetComponent<Entity>())
+        Collider2D collObj = collision.collider;
+        if (collObj.GetComponent<Entity>())
         {
             Destroy(gameObject);
+                collObj.gameObject.GetComponent<Entity>().hp -= 1;
         }
     }
 }
