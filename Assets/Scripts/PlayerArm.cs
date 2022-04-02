@@ -13,9 +13,7 @@ public class PlayerArm : MonoBehaviour
     [SerializeField]
     private Transform gunOrigin;
 
-    float angle;
-
-    public GameObject bulletSpawnTemplate;
+    private float angle;
 
     // Start is called before the first frame update
     void Start()

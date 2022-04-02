@@ -21,9 +21,9 @@ public abstract class EnemyAI : MonoBehaviour
 
     public enum State
     {
+        SPAWNING,
         ATTACK,
         TRAVERSE,
-        SPAWNING,
 
     };
 
@@ -41,6 +41,9 @@ public abstract class EnemyAI : MonoBehaviour
     {
         state = State.SPAWNING;
         enemyMovement = GetComponent<EnemyMovement>();
+        pathfinder = GameObject.FindGameObjectWithTag("Pathfinder").GetComponent<Pathfinder>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        nuclearBase = GameObject.FindGameObjectWithTag("Enemy Target").GetComponent<NuclearSilo>();
     }
     
     public void goTo(Vector2 pos)

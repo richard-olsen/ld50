@@ -9,8 +9,6 @@ public class GruntAI : EnemyAI
 
     private NuclearMeleeRange range = null;
 
-    private int playerAggression = 0;
-
     private float attackTime = 0;
     private float attackTimer = 0;
 
@@ -23,7 +21,10 @@ public class GruntAI : EnemyAI
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        NuclearMeleeRange range = collision.GetComponent<NuclearMeleeRange>();
+
+        if (!(range is null))
+            this.range = range;
     }
 
     private void doAttack()
@@ -45,7 +46,7 @@ public class GruntAI : EnemyAI
         switch (state)
         {
             case State.TRAVERSE:
-                if ((range is null))
+                if (!(range is null))
                     setState(State.ATTACK);
                 break;
 
