@@ -67,6 +67,7 @@ public class PlayerArm : MonoBehaviour
         {
             // Drop weapon
             gun.transform.SetParent(null, true);
+            gun.attachTo(null);
             gun = null;
         }
     }
@@ -76,6 +77,7 @@ public class PlayerArm : MonoBehaviour
 
         this.gun = gun;
         this.gun.transform.SetParent(gunOrigin, false);
+        this.gun.attachTo(this);
     }
     public float getAngle()
     {

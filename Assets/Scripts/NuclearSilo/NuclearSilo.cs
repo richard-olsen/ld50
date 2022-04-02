@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NuclearBase : MonoBehaviour
+public class NuclearSilo : MonoBehaviour
 {
     private int hp = 500;
     // Start is called before the first frame update
