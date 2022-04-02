@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class SingleShot : Gun
 {
+    float timer = 0;
     public override void beginShooting(float direction)
     {
-        spawnProjectile(direction);
+        if (timer < Time.time)
+        {
+            spawnProjectiles(direction);
+            timer = Time.time + FireRate;
+        }
+    }
+    public override void endShooting()
+    {
+
     }
 
     void Awake()

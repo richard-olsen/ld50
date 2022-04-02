@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5370328119457956710}
   - component: {fileID: 6652913503912093886}
   m_Layer: 0
-  m_Name: GunReference
+  m_Name: SingleShotReference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 8065178105317967000}
   bulletTemplate: {fileID: 2153549353609126414, guid: 298ed97a724ad1f4eaf9c01e06464bf2, type: 3}
-  fireRate: 0
+  fireRate: 0.3
   burstRate: 0
-  bulletCount: 0
+  bulletCount: 1
   spread: 22.5
   maxAmmo: 0
   maxClipAmmo: 0

@@ -73,6 +73,15 @@ public class PlayerArm : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
+            if (!(gun is null))
+            {
+                gun.endShooting();
+            }
         }
+    }
+
+    public float getAngle()
+    {
+        return angle;
     }
 }
