@@ -10,6 +10,9 @@ public class PlayerArm : MonoBehaviour
     [SerializeField]
     private Gun gun;
 
+    [SerializeField]
+    private Transform gunOrigin;
+
     float angle;
 
     public GameObject bulletSpawnTemplate;
@@ -58,7 +61,22 @@ public class PlayerArm : MonoBehaviour
             }
         }
     }
+    public void dropWeapon()
+    {
+        if (!(gun is null))
+        {
+            // Drop weapon
+            gun.transform.SetParent(null, true);
+            gun = null;
+        }
+    }
+    public void giveWeapon(Gun gun)
+    {
+        dropWeapon();
 
+        this.gun = gun;
+        this.gun.transform.SetParent(gunOrigin, false);
+    }
     public float getAngle()
     {
         return angle;

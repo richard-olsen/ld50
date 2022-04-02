@@ -129,13 +129,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 8065178105317967000}
   bulletTemplate: {fileID: 2153549353609126414, guid: 298ed97a724ad1f4eaf9c01e06464bf2, type: 3}
+  playerArm: {fileID: 0}
   fireRate: 0.3
   burstRate: 0
   bulletCount: 1
-  spread: 22.5
-  maxAmmo: 0
-  maxClipAmmo: 0
-  ammoInClip: 0
+  spread: 6
+  maxReserveAmmo: 20
+  maxClipAmmo: 10
+  ammoInClip: 10
+  ammoInReserve: 20
+  reloadTime: 0.3
 --- !u!1 &8840308926479556483
 GameObject:
   m_ObjectHideFlags: 0
