@@ -26,4 +26,11 @@ public class Projectile : MonoBehaviour
     {
         body.MovePosition(body.position + direction * speed * Time.deltaTime);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<Entity>())
+        {
+            Destroy(gameObject);
+        }
+    }
 }
