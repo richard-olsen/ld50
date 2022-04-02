@@ -10,6 +10,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private PlayerMovement player;
 
+    [SerializeField]
+    private NuclearBase nuclearBase;
+
     private EnemyMovement enemyMovement;
     private List<PathNode> path;
 
@@ -31,7 +34,8 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        path = pathfinder.findPath(TileX, TileY, player.TileX, player.TileY);
+        Vector2 pos = nuclearBase.getRandomPoint();
+        path = pathfinder.findPath(TileX, TileY, Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
     }
     
     void FixedUpdate()
