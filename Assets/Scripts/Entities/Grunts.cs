@@ -33,8 +33,11 @@ public class Grunts : Entity
                 for (int i = 0; i < damage.Length; i++)
                 {
                     Player player = damage[i].gameObject.GetComponent<Player>();
+                    NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
                     if (!(player is null))
                         player.damage(4);
+                    if (!(silo is null))
+                        silo.attackSilo(4);
                 }
             }
             attackTime = startTimeAttack;
