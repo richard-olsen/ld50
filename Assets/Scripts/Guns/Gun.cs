@@ -45,9 +45,4 @@ public abstract class Gun : MonoBehaviour
 
     public abstract void beginShooting(float direction);
     public abstract void endShooting();
-
-    private IEnumerator fireSemiAuto()
-    {
-        yield return null;
-    }
 }

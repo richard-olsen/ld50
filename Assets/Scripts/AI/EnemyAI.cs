@@ -52,15 +52,16 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (path.Count > 0)
-        {
-            PathNode lastNode = path[path.Count - 1];
+        // Keep just in case pathfinding needs debugging again
+        //if (path.Count > 0)
+        //{
+        //    PathNode lastNode = path[path.Count - 1];
 
-            while (!(lastNode.previousNode is null))
-            {
-                Debug.DrawLine(toCoordinate(lastNode), toCoordinate(lastNode.previousNode));
-                lastNode = lastNode.previousNode;
-            }
-        }
+        //    while (!(lastNode.previousNode is null))
+        //    {
+        //        Debug.DrawLine(toCoordinate(lastNode), toCoordinate(lastNode.previousNode));
+        //        lastNode = lastNode.previousNode;
+        //    }
+        //}
     }
 }

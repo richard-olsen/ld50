@@ -20,7 +20,5 @@ public class NuclearBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position + Vector3.right * transform.localScale.x * .66f, Vector3.up);
-        Debug.DrawRay(getRandomPoint(), Vector3.up);
     }
 }

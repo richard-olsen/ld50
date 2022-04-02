@@ -9,4 +9,17 @@ public class Bullet : Projectile
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.isTrigger) // Bullets should be able to pass triggers
+            return;
+
+        Entity entity = collision.GetComponent<Entity>();
+        if (!(entity is null))
+        {
+            entity.damage(2);
+        }
+        Destroy(gameObject);
+    }
 }

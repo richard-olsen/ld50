@@ -20,7 +20,7 @@ public class Melee : MonoBehaviour
         Collider2D collObj = collision.collider;
         if (collObj.GetComponent<Entity>())
         {
-            collObj.gameObject.GetComponent<Entity>().hp -= 2;
+            //collObj.gameObject.GetComponent<Entity>().hp -= 2;
         }
     }
 }
