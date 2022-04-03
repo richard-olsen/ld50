@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    private int hp = 0;
+    public int hp = 0;
 
     // Start is called before the first frame update
     void Start()

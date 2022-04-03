@@ -6,6 +6,6 @@ public class WeaponUpgradeMagSize : WeaponUpgrade
 {
     public override void upgradeWeapon(Gun gun)
     {
-        gun.upgradeMagSize(50);
+        gun.upgradeMagSize(upgradePercentage);
     }
 }
