@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 145c7be678de0ba47bc7f0f931db4bc8, type: 3}
   m_Color: {r: 0.8117647, g: 0.28360015, b: 0.2627451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,6 +192,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb8cbad2c4bd354098e99de7970431d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackTime: 0
+  startTimeAttack: 0
+  attackLocation: {fileID: 0}
+  attackRange: 0
+  player:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5553431245399586931
 MonoBehaviour:
   m_ObjectHideFlags: 0
