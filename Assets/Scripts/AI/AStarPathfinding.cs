@@ -24,7 +24,7 @@ public class AStarPathfinding
     {
         tilemap = tiles;
         BoundsInt bounds = tiles.cellBounds;
-
+        
         originX = bounds.xMin;
         originY = bounds.yMin;
 

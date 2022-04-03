@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 145c7be678de0ba47bc7f0f931db4bc8, type: 3}
   m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   playerArm: {fileID: 0}
   fireRate: 0.3
   burstRate: 0
+  damage: 0
   bulletCount: 1
   spread: 6
   maxReserveAmmo: 20

@@ -17,6 +17,9 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     private float burstRate;            // For semi auto, the rate between bursts of fire
     public float BurstRate { get => burstRate; }
+    [SerializeField]
+    private int damage;           //damage of each projectile shot
+    public int Damage { get => damage; }
 
     [SerializeField]
     private int bulletCount;            // Bullet count per shot, think like a shot gun
@@ -24,10 +27,12 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     private float spread;               // The spread of bullets
 
+
     [SerializeField]
     private int maxReserveAmmo;
     [SerializeField]
     private int maxClipAmmo;
+    public int MaxClipAmmo { get => maxClipAmmo; }
     [SerializeField]
     private int ammoInClip;
     [SerializeField]
@@ -48,6 +53,7 @@ public abstract class Gun : MonoBehaviour
             bulletObject.transform.position = bulletSpawn.position;
             Bullet bullet = bulletObject.GetComponent<Bullet>();
             bullet.setDirection(new Vector2(Mathf.Cos(newDirection), Mathf.Sin(newDirection)));
+            bullet.setDamage(damage);
         }
     }
 
@@ -88,5 +94,19 @@ public abstract class Gun : MonoBehaviour
     void Update()
     {
         doReload();
+    }
+
+    //weapon upgrades, int values round down via truncation, percentage parameter is percentage of improvement
+    public void upgradeDamage(double percentage)
+    {
+        damage = damage * (int)(1 + percentage/100);
+    }
+    public void upgradeROF(double percentage)
+    {
+        fireRate = fireRate * (float)(1 + percentage/100);
+    }
+    public void upgradeMagSize(double percentage)
+    {
+        maxClipAmmo = maxClipAmmo * (int)(1 + percentage/100);
     }
 }

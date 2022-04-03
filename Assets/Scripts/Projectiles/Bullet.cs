@@ -18,7 +18,7 @@ public class Bullet : Projectile
         Entity entity = collision.GetComponent<Entity>();
         if (!(entity is null))
         {
-            entity.damage(2);
+            entity.damage(damage);
         }
         Destroy(gameObject);
     }

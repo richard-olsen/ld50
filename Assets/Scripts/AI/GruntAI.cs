@@ -12,11 +12,14 @@ public class GruntAI : EnemyAI
     private float attackTime = 0;
     private float attackTimer = 0;
 
+    private int aggregationTippingPoint;
+
     protected void Awake()
     {
         base.Awake();
         grunt = GetComponent<Grunts>();
         attackTime = Random.Range(1.0f, 2.0f);
+        aggregationTippingPoint = Random.Range(20, 40);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -34,15 +37,17 @@ public class GruntAI : EnemyAI
         {
             attackTimer = attackTime;
 
-            GameObject obj = GameObject.Instantiate(Resources.Load<GameObject>("Bullet"));
-            Bullet bullet = obj.GetComponent<Bullet>();
-            bullet.setDirection(Vector2.up);
-            bullet.transform.position = transform.position + Vector3.up;
+            range.attackSilo(2);
         }
     }
 
     protected override void execute(State state)
     {
+        if (getPlayerAggregation() >= aggregationTippingPoint)
+        {
+            chasePlayer();
+        }
+
         switch (state)
         {
             case State.TRAVERSE:

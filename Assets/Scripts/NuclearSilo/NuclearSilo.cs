@@ -21,4 +21,12 @@ public class NuclearSilo : MonoBehaviour
     void Update()
     {
     }
+
+    public void damage(int amount)
+    {
+        hp -= amount;
+        if (hp <= 0)
+            //death event
+            Destroy(gameObject);
+    }
 }
