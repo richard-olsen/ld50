@@ -6,5 +6,6 @@ public class WeaponUpgradeRateOfFire : WeaponUpgrade
 {
     public override void upgradeWeapon(Gun gun)
     {
+        gun.upgradeROF(25);
     }
 }
