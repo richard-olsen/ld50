@@ -2,22 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public abstract class EnemyAI : MonoBehaviour
 {
     [SerializeField]
     private Pathfinder pathfinder;
 
     [SerializeField]
-    private PlayerMovement player;
+    protected PlayerMovement player;
 
     [SerializeField]
-    private NuclearBase nuclearBase;
+    protected NuclearSilo nuclearBase;
 
     private EnemyMovement enemyMovement;
     private List<PathNode> path;
 
     public int TileX { get => Mathf.RoundToInt(transform.position.x - 0.5f); }
     public int TileY { get => Mathf.RoundToInt(transform.position.y - 0.5f); }
+
+    public enum State
+    {
+        SPAWNING,
+        ATTACK,
+        TRAVERSE,
+
+    };
+
+    private State state;
 
     public Vector2 toCoordinate(PathNode node)
     {
@@ -27,31 +37,27 @@ public class EnemyAI : MonoBehaviour
             );
     }
 
-    void Awake()
+    protected void Awake()
     {
+        state = State.SPAWNING;
         enemyMovement = GetComponent<EnemyMovement>();
-    }
-
-    void Start()
-    {
-        Vector2 pos = nuclearBase.getRandomPoint();
-        path = pathfinder.findPath(TileX, TileY, Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
+        pathfinder = GameObject.FindGameObjectWithTag("Pathfinder").GetComponent<Pathfinder>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        nuclearBase = GameObject.FindGameObjectWithTag("Enemy Target").GetComponent<NuclearSilo>();
     }
     
-    void FixedUpdate()
+    public void goTo(Vector2 pos)
     {
-        if (Input.GetKey(KeyCode.P))
-            path = pathfinder.findPath(TileX, TileY, player.TileX, player.TileY);
-        if (path.Count > 0)
+        path = pathfinder.findPath(TileX, TileY, Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
+    }
+    private void moveToPath()
+    {
+        if (enemyMovement.isWithinTargetPosition())
         {
-            if (enemyMovement.isWithinTargetPosition())
-            {
-                PathNode pathnode = path[0];
-                enemyMovement.moveTo(toCoordinate(pathnode));
-                path.RemoveAt(0);
-            }
+            PathNode pathnode = path[0];
+            enemyMovement.moveTo(toCoordinate(pathnode));
+            path.RemoveAt(0);
         }
-
         // Keep just in case pathfinding needs debugging again
         //if (path.Count > 0)
         //{
@@ -63,5 +69,21 @@ public class EnemyAI : MonoBehaviour
         //        lastNode = lastNode.previousNode;
         //    }
         //}
+    }
+
+    protected abstract void execute(State state);
+
+    void FixedUpdate()
+    {
+        // Prioritize moving
+        if (!(path is null) && path.Count > 0)
+            moveToPath();
+
+        execute(state);
+    }
+
+    protected void setState(State state)
+    {
+        this.state = state;
     }
 }

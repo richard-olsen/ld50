@@ -80,6 +80,11 @@ public abstract class Gun : MonoBehaviour
         ammoInClip -= count;
     }
 
+    public void attachTo(PlayerArm arm)
+    {
+        playerArm = arm;
+    }
+
     void Update()
     {
         doReload();
