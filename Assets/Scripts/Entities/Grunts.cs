@@ -33,14 +33,35 @@ public class Grunts : Entity
                 for (int i = 0; i < damage.Length; i++)
                 {
                     Player player = damage[i].gameObject.GetComponent<Player>();
-                    NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
                     if (!(player is null))
                         player.damage(4);
+                }
+            }
+            attackTime = startTimeAttack;
+        }
+        else
+        {
+            attackTime -= Time.deltaTime;
+            anim.SetBool("Is_attacking", false);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (attackTime <= 0)
+        {
+            NuclearMeleeRange attRange = collision.gameObject.GetComponent<NuclearMeleeRange>();
+            if (!(attRange is null))
+            {
+                anim.SetBool("Is_attacking", true);
+                Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
+
+                for (int i = 0; i < damage.Length; i++)
+                {
+                    NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
                     if (!(silo is null))
                         silo.attackSilo(4);
                 }
             }
-            attackTime = startTimeAttack;
         }
         else
         {
