@@ -8,6 +8,7 @@ public class GruntAI : EnemyAI
     private Grunts grunt;
 
     private NuclearMeleeRange range = null;
+    private Player player = null;
 
     private float attackTime = 0;
     private float attackTimer = 0;
@@ -25,9 +26,12 @@ public class GruntAI : EnemyAI
     void OnTriggerEnter2D(Collider2D collision)
     {
         NuclearMeleeRange range = collision.GetComponent<NuclearMeleeRange>();
+        Player player = collision.GetComponent<Player>();
 
         if (!(range is null))
             this.range = range;
+        if (!(player is null))
+            this.player = player;
     }
 
     private void doAttack()
@@ -35,9 +39,7 @@ public class GruntAI : EnemyAI
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            attackTimer = attackTime;
-
-            range.attackSilo(2);
+            grunt.attackSilo(range);
         }
     }
 
