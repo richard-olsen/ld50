@@ -39,7 +39,16 @@ public class GruntAI : EnemyAI
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0)
         {
-            grunt.attackSilo(range);
+            if (IsChasingPlayer)
+            {
+                grunt.attackPlayer(player);
+            }
+            else
+            {
+                grunt.attackSilo(range);
+            }
+
+            attackTimer = attackTime;
         }
     }
 
@@ -53,12 +62,37 @@ public class GruntAI : EnemyAI
         switch (state)
         {
             case State.TRAVERSE:
-                if (!(range is null))
-                    setState(State.ATTACK);
+                if (IsChasingPlayer)
+                {
+                    if ((player.transform.position - transform.position).magnitude <= 1.5f)
+                        setState(State.ATTACK);
+                }
+                else
+                {
+                    if (!(range is null))
+                        setState(State.ATTACK);
+                }
+
                 break;
 
             case State.ATTACK:
-                doAttack();
+                if (IsChasingPlayer)
+                {
+                    if ((player.transform.position - transform.position).magnitude > 1.5f)
+                    {
+                        setState(State.TRAVERSE);
+                    }
+                    doAttack();
+                }
+                else
+                {
+                    if (range is null)
+                    {
+                        setState(State.TRAVERSE);
+                    }
+                    doAttack();
+                }
+                
                 break;
 
             case State.SPAWNING:

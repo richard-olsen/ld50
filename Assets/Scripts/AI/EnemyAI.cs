@@ -14,6 +14,7 @@ public abstract class EnemyAI : MonoBehaviour
     private List<PathNode> path;
     private int playerAggregation = 0;
     private bool shouldChasePlayer = false;
+    public bool IsChasingPlayer { get => shouldChasePlayer; }
     private float playerPathCalculateTimer = 0;
 
     public int TileX { get => Mathf.RoundToInt(transform.position.x - 0.5f); }

@@ -30,16 +30,12 @@ public class Grunts : Entity
 
     public void attackSilo(NuclearMeleeRange range)
     {
-        gruntAnimator.SetBool("Is_attacking", true);
         range.attackSilo(2);
-        gruntAnimator.SetBool("Is_attacking", false);
     }
 
     public void attackPlayer(Player player)
     {
-        gruntAnimator.SetBool("Is_attacking", true);
         player.damage(2);
-        gruntAnimator.SetBool("Is_attacking", false);
     }
 
     // Update is called once per frame
