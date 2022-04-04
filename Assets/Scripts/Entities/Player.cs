@@ -29,6 +29,8 @@ public class Player : Entity
     void Update()
     {
         if (Input.GetButtonDown("Interact"))
+            onDeath();
+        if (Input.GetButtonDown("Interact"))
         {
             if (!(closestSilo is null))
             {
@@ -47,7 +49,7 @@ public class Player : Entity
     }
     public override void onDeath()
     {
-        SceneManager.LoadScene(sceneName: "GameOver");
+        SceneManager.LoadScene("GameOver");
     }
     public void giveWeapon(Gun gun)
     {

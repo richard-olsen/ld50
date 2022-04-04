@@ -86,7 +86,6 @@ public class Entity : MonoBehaviour
                 obj.transform.position = transform.position;
             }
             onDeath();
-            Destroy(gameObject);
         }
     }
 }

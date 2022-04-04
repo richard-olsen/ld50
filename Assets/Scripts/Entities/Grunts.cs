@@ -38,56 +38,61 @@ public class Grunts : Entity
         player.damage(2);
     }
 
-    // Update is called once per frame
-/*    void Update()
+    public override void onDeath()
     {
-        //melee attack
-        if (attackTime <= 0)
-        {
-            if (!(gameObject.GetComponent<Player>() is null) && Vector2.Distance(this.transform.position,gameObject.GetComponent<Player>().transform.position) < 1) //FIXME: distance comparison must be updated once we know length of weapon/arms
-            {
-                debug_PlayerRange = true;
-                gruntAnimator.SetBool("Is_attacking", true);
-                Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
-
-                for (int i = 0; i < damage.Length; i++)
-                {
-                    Player player = damage[i].gameObject.GetComponent<Player>();
-                    if (!(player is null))
-                        player.damage(2);
-                }
-            }
-            attackTime = startTimeAttack;
-        }
-        else
-        {
-            attackTime -= Time.deltaTime;
-            gruntAnimator.SetBool("Is_attacking", false);
-        }
+        Destroy(gameObject);
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (attackTime <= 0)
-        {
-            NuclearMeleeRange attRange = collision.gameObject.GetComponent<NuclearMeleeRange>();
-            if (!(attRange is null))
-            {
-                debug_SiloRange = true;
-                gruntAnimator.SetBool("Is_attacking", true);
-                Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
 
-                for (int i = 0; i < damage.Length; i++)
+    // Update is called once per frame
+    /*    void Update()
+        {
+            //melee attack
+            if (attackTime <= 0)
+            {
+                if (!(gameObject.GetComponent<Player>() is null) && Vector2.Distance(this.transform.position,gameObject.GetComponent<Player>().transform.position) < 1) //FIXME: distance comparison must be updated once we know length of weapon/arms
                 {
-                    NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
-                    if (!(silo is null))
-                        silo.attackSilo(2);
+                    debug_PlayerRange = true;
+                    gruntAnimator.SetBool("Is_attacking", true);
+                    Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
+
+                    for (int i = 0; i < damage.Length; i++)
+                    {
+                        Player player = damage[i].gameObject.GetComponent<Player>();
+                        if (!(player is null))
+                            player.damage(2);
+                    }
                 }
+                attackTime = startTimeAttack;
+            }
+            else
+            {
+                attackTime -= Time.deltaTime;
+                gruntAnimator.SetBool("Is_attacking", false);
             }
         }
-        else
+        private void OnCollisionStay2D(Collision2D collision)
         {
-            attackTime -= Time.deltaTime;
-            gruntAnimator.SetBool("Is_attacking", false);
-        }
-    } */
+            if (attackTime <= 0)
+            {
+                NuclearMeleeRange attRange = collision.gameObject.GetComponent<NuclearMeleeRange>();
+                if (!(attRange is null))
+                {
+                    debug_SiloRange = true;
+                    gruntAnimator.SetBool("Is_attacking", true);
+                    Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
+
+                    for (int i = 0; i < damage.Length; i++)
+                    {
+                        NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
+                        if (!(silo is null))
+                            silo.attackSilo(2);
+                    }
+                }
+            }
+            else
+            {
+                attackTime -= Time.deltaTime;
+                gruntAnimator.SetBool("Is_attacking", false);
+            }
+        } */
 }
