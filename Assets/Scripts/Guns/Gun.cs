@@ -71,7 +71,8 @@ public abstract class Gun : MonoBehaviour
 
     public void reload()
     {
-        reloadTimer = reloadTime;
+        if (reloadTimer <= 0 && ammoInReserve > 0 && ammoInClip < maxClipAmmo)
+            reloadTimer = reloadTime;
     }
 
     private void doReload()

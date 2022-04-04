@@ -11,9 +11,6 @@ public class Player : Entity
     void Start()
     {
         giveHealth(20);
-
-        GameObject gun = GameObject.Instantiate(Resources.Load<GameObject>("Guns/XRRSG"));
-        giveWeapon(gun.GetComponent<Gun>());
     }
 
     // Update is called once per frame

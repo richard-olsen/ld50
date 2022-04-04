@@ -22,6 +22,8 @@ public class PlayerArm : MonoBehaviour
     private Text weaponAmmo;
     [SerializeField]
     private GameObject reloadPanel;
+    [SerializeField]
+    private Text reloadText;
 
     private float angle;
 
@@ -67,9 +69,19 @@ public class PlayerArm : MonoBehaviour
             gun.reload();
         }
 
+        weaponAmmo.text = $"{gun.AmmoClip} / {gun.AmmoReserve}";
+
         if (gun.AmmoClip == 0)
         {
             reloadPanel.SetActive(true);
+            if (gun.AmmoReserve == 0)
+            {
+                reloadText.text = "Out of Ammo";
+            }
+            else
+            {
+                reloadText.text = "Press [R] to Reload";
+            }
         }
         else if (gun.AmmoClip < (int)(gun.MaxClipAmmo * 0.25f))
         {
@@ -80,8 +92,6 @@ public class PlayerArm : MonoBehaviour
             reloadPanel.SetActive(false);
             weaponAmmo.color = Color.black;
         }
-
-        weaponAmmo.text = $"{gun.AmmoClip} / {gun.AmmoReserve}";
     }
     public void dropWeapon()
     {

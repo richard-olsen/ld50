@@ -10,6 +10,7 @@ public class Tutorial : MonoBehaviour
     [Multiline]
     public List<string> tutorialTexts;
     public int tutorialTextIndex;
+    public Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,22 @@ public class Tutorial : MonoBehaviour
         tutorialText.text = tutorialTexts[tutorialTextIndex];
     }
 
+    private void disableAndGivePlayerPistol()
+    {
+        GameObject gun = GameObject.Instantiate(Resources.Load<GameObject>("Guns/P19n"));
+        player.giveWeapon(gun.GetComponent<Gun>());
+
+        tutorialPanel.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
     private void nextTutorialString()
     {
         tutorialTextIndex++;
 
         if (tutorialTextIndex >= tutorialTexts.Count)
         {
-            tutorialPanel.SetActive(false);
-            gameObject.SetActive(false);
+            disableAndGivePlayerPistol();
             return;
         }
 
@@ -47,8 +56,7 @@ public class Tutorial : MonoBehaviour
 
         if (Input.GetButtonDown("Skip"))
         {
-            tutorialPanel.SetActive(false);
-            gameObject.SetActive(false);
+            disableAndGivePlayerPistol();
         }
     }
 }
