@@ -69,14 +69,17 @@ public abstract class EnemyAI : MonoBehaviour
             chasePlayer();
             return;
         }
-        goTo(pathfinder.getRandomSilo().transform.position);
+        goTo(pathfinder.getRandomSilo().getRandomPoint());
     }
 
     public void goTo(Vector2 pos)
     {
         path = pathfinder.findPath(TileX, TileY, Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
         if (path is null)
+        {
+            Debug.LogWarning($"Path not found! {pos.x}, {pos.y}");
             return;
+        }
         if (path.Count > 0)
         {
             Vector2 distance = (Vector2)transform.position - toCoordinate(path[0]);

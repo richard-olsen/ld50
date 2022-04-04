@@ -43,6 +43,7 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField]
     private int maxReserveAmmo;
+    public int MaxReserveAmmo { get => maxReserveAmmo; }
     [SerializeField]
     private int maxClipAmmo;
     public int MaxClipAmmo { get => maxClipAmmo; }
@@ -139,6 +140,15 @@ public abstract class Gun : MonoBehaviour
             if (destroyTimer >= 60.0f)
                 Destroy(gameObject);
         }
+    }
+
+    public void setAmmo(int ammo)
+    {
+        ammoInClip = Mathf.Clamp(ammo, 0, MaxClipAmmo);
+    }
+    public void setReserves(int ammo)
+    {
+        ammoInReserve = Mathf.Clamp(ammo, 0, MaxReserveAmmo);
     }
 
     //weapon upgrades, int values round down via truncation, percentage parameter is percentage of improvement

@@ -68,6 +68,12 @@ public class Entity : MonoBehaviour
         {
             if (dropNutrino)
                 dropNutrinos();
+            int randPercentage = Random.Range(0, 100);
+            if (randPercentage < 13)
+            {
+                GameObject obj = Instantiate(Resources.Load<GameObject>("Max Ammo"));
+                obj.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }
