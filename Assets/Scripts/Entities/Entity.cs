@@ -45,7 +45,7 @@ public class Entity : MonoBehaviour
     }
     public virtual void onDeath()
     {
-
+        
     }
 
     public void dropNutrinos()
