@@ -78,7 +78,7 @@ public class PlayerArm : MonoBehaviour
         if (player.IsCloseToSilo)
         {
             reloadPanel.SetActive(true);
-            reloadText.text = "Press [E] to Upgrade Gun!";
+            reloadText.text = "Press [E] to Upgrade Gun! - Costs 500 Nutrino Cells";
         }
 
         if (!(player.WeaponBuy is null))

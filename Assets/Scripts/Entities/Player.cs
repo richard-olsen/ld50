@@ -31,7 +31,11 @@ public class Player : Entity
         {
             if (!(closestSilo is null))
             {
-                closestSilo.upgradeWeapon(playersArm.getGun());
+                if (NutrinoCellCount >= 500)
+                {
+                    closestSilo.upgradeWeapon(playersArm.getGun());
+                    giveNutrinoCell(-500);
+                }
             }
 
             if (!(closestWeaponBuy is null))

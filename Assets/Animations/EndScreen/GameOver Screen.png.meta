@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: c7906ac3541734106af6a43b5788f699
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6324342946722226128
+    second: GameOver Screen_0
+  - first:
+      213: -6015896332671738509
+    second: GameOver Screen_1
+  - first:
+      213: 766843899677288109
+    second: GameOver Screen_2
+  - first:
+      213: -154928841914329476
+    second: GameOver Screen_3
+  - first:
+      213: -3508217882761631023
+    second: GameOver Screen_4
+  - first:
+      213: -4393033693878388085
+    second: GameOver Screen_5
+  - first:
+      213: 5133805517556525776
+    second: GameOver Screen_6
+  - first:
+      213: -3951595737217307367
+    second: GameOver Screen_7
+  - first:
+      213: 8511831623357824902
+    second: GameOver Screen_8
+  - first:
+      213: 8605898530488920521
+    second: GameOver Screen_9
+  - first:
+      213: -471558072083948606
+    second: GameOver Screen_10
+  - first:
+      213: 7149228926848552452
+    second: GameOver Screen_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,21 +68,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,7 +104,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -77,7 +125,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: GameOver Screen_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 365
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030efd6099b6b38a0800000000000000
+      internalID: -6324342946722226128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 365
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d9685b82e338ca0800000000000000
+      internalID: -6015896332671738509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 292
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6a07eb67064aa00800000000000000
+      internalID: 766843899677288109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 292
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76db340a0599ddf0800000000000000
+      internalID: -154928841914329476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 219
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dae1574c6e405fc0800000000000000
+      internalID: -3508217882761631023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 219
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a7e06712fc803c0800000000000000
+      internalID: -4393033693878388085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daa5eb0be0fe3740800000000000000
+      internalID: 5133805517556525776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 146
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91de63b0d9c1929c0800000000000000
+      internalID: -3951595737217307367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 73
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ffd2a83c9102670800000000000000
+      internalID: 8511831623357824902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 73
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c929d21e1b4e6770800000000000000
+      internalID: 8605898530488920521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbd77e8e60b479f0800000000000000
+      internalID: -471558072083948606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameOver Screen_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e41caa4d9273360800000000000000
+      internalID: 7149228926848552452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

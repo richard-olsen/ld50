@@ -12,7 +12,7 @@ public abstract class WeaponUpgrade : MonoBehaviour
     {
         //upgradePercentage /= 2;
     }
-    protected void takeMoney()
+    public void takeMoney()
     {
         player.giveNutrinoCell(-upgradeCost);
     }

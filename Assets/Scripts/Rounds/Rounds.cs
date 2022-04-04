@@ -160,8 +160,6 @@ public class Rounds : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-            startNewRound();
         if (roundOver)
         {
             startNewRound();
