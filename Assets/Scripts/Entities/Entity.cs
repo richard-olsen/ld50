@@ -43,6 +43,11 @@ public class Entity : MonoBehaviour
     {
         nutrinoCells += nutrino;
     }
+    public virtual void onDeath()
+    {
+
+    }
+
     public void dropNutrinos()
     {
         for (int i = 0; i < nutrinoCells; i++)
@@ -69,11 +74,18 @@ public class Entity : MonoBehaviour
             if (dropNutrino)
                 dropNutrinos();
             int randPercentage = Random.Range(0, 100);
-            if (randPercentage < 13)
+            if (randPercentage < 8)
             {
                 GameObject obj = Instantiate(Resources.Load<GameObject>("Max Ammo"));
                 obj.transform.position = transform.position;
             }
+            randPercentage -= 8;
+            if (randPercentage < 8)
+            {
+                GameObject obj = Instantiate(Resources.Load<GameObject>("Health Drop"));
+                obj.transform.position = transform.position;
+            }
+            onDeath();
             Destroy(gameObject);
         }
     }
