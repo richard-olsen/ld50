@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NuclearSilo : MonoBehaviour
 {
-    private int hp = 500;
+    public int hp = 500;
     // Start is called before the first frame update
     void Start()
     {
