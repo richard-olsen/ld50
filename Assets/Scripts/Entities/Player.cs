@@ -40,7 +40,10 @@ public class Player : Entity
             }
         }
     }
+    public override void onDeath()
+    {
 
+    }
     public void giveWeapon(Gun gun)
     {
         playersArm.giveWeapon(gun);
