@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5553431244119656072}
   - component: {fileID: 5553431244119656073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5553431244708506350}
   - component: {fileID: 5553431244708506351}
   - component: {fileID: 5553431244708506344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Aggrivation Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,8 @@ GameObject:
   - component: {fileID: 5553431245399586930}
   - component: {fileID: 5553431245399586929}
   - component: {fileID: 5553431245399586928}
-  m_Layer: 0
+  - component: {fileID: 3650828137177755379}
+  m_Layer: 6
   m_Name: Grunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +244,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.45
 --- !u!50 &5553431245399586928
 Rigidbody2D:
   serializedVersion: 4
@@ -265,3 +266,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &3650828137177755379
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553431245399586935}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32aeb0472f7a12848bb702d84e26312f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

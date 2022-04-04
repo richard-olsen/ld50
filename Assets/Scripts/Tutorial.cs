@@ -11,6 +11,7 @@ public class Tutorial : MonoBehaviour
     public List<string> tutorialTexts;
     public int tutorialTextIndex;
     public Player player;
+    public Rounds rounds;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class Tutorial : MonoBehaviour
     {
         GameObject gun = GameObject.Instantiate(Resources.Load<GameObject>("Guns/P19n"));
         player.giveWeapon(gun.GetComponent<Gun>());
+
+        rounds.startNewRound();
 
         tutorialPanel.SetActive(false);
         gameObject.SetActive(false);

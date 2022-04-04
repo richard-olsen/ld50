@@ -15,7 +15,7 @@ public class Grunts : Entity
     // Start is called before the first frame update
     void Start()
     {
-        giveHealth(3);
+        giveNutrinoCell(Random.Range(3, 7));
         anim = GetComponent<Animator>();
     }
 

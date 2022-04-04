@@ -6,4 +6,8 @@ public abstract class WeaponUpgrade : MonoBehaviour
 {
     public int upgradePercentage;
     public abstract void upgradeWeapon(Gun gun);
+    public void degradePercentage()
+    {
+        upgradePercentage /= 2;
+    }
 }

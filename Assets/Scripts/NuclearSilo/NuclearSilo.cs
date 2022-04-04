@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class NuclearSilo : MonoBehaviour
 {
-    private int hp = 500;
+    public int hp = 500;
+    public ParticleSystem badParticles;
+    public ParticleSystem goodParticles;
+    public GameObject visualStructure;
+    public bool IsDestroyed { get => badParticles.isPlaying; }
+    public WeaponUpgrade upgradeStation;
     // Start is called before the first frame update
     void Start()
     {
-        
+        badParticles.Stop();
     }
 
     public Vector2 getRandomPoint()
@@ -22,11 +27,28 @@ public class NuclearSilo : MonoBehaviour
     {
     }
 
+    public void destroySilo()
+    {
+        // Play sound effect
+
+        // Boom particles
+
+        visualStructure.SetActive(false);
+
+        badParticles.Play();
+        goodParticles.Stop();
+    }
+
     public void damage(int amount)
     {
         hp -= amount;
         if (hp <= 0)
             //death event
             Destroy(gameObject);
+    }
+    public void upgradeWeapon(Gun gun)
+    {
+        upgradeStation.upgradeWeapon(gun);
+        upgradeStation.degradePercentage();
     }
 }

@@ -24,54 +24,36 @@ public class PlayerArm : MonoBehaviour
     private GameObject reloadPanel;
     [SerializeField]
     private Text reloadText;
+    [SerializeField]
+    private Text healthText;
+    [SerializeField]
+    private Text nutrinoText;
+
+    [SerializeField]
+    private Player player;
 
     private float angle;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+    }
+    
+    private void updateStatsPanel()
+    {
+        nutrinoText.text = $"Nutrinos: {player.NutrinoCellCount}";
+        healthText.text = $"Health: {player.Health}";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void updateOtherPanels()
     {
-        Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        mouseWorldPos.z = 0;
-        Vector3 direction = (mouseWorldPos - pos).normalized;
-
-        angle = Vector3.Angle(Vector3.right, direction);
-        if (direction.y < 0)
-            angle *= -1.0f;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        angle *= Mathf.Deg2Rad;
-
-        if (gun is null)
-        {
-            weaponPanel.SetActive(false);
-            reloadPanel.SetActive(false);
-            return;
-        }
-
-        if (Input.GetButtonDown("Shoot"))
-        {
-            gun.beginShooting(angle);
-        }
-        if (Input.GetButtonUp("Shoot"))
-        {
-            gun.endShooting();
-        }
-        if (Input.GetButtonDown("Reload"))
-        {
-            gun.reload();
-        }
-
         weaponAmmo.text = $"{gun.AmmoClip} / {gun.AmmoReserve}";
 
-        if (gun.AmmoClip == 0)
+        if (gun.IsReloading)
+        {
+            reloadPanel.SetActive(true);
+            reloadText.text = "Reloading...";
+        }
+        else if (gun.AmmoClip == 0)
         {
             reloadPanel.SetActive(true);
             if (gun.AmmoReserve == 0)
@@ -92,6 +74,59 @@ public class PlayerArm : MonoBehaviour
             reloadPanel.SetActive(false);
             weaponAmmo.color = Color.black;
         }
+
+        if (player.IsCloseToSilo)
+        {
+            reloadPanel.SetActive(true);
+            reloadText.text = "Press [E] to Upgrade Gun!";
+        }
+
+        if (!(player.WeaponBuy is null))
+        {
+            reloadPanel.SetActive(true);
+            reloadText.text = $"Press [E] to Buy - Costs {player.WeaponBuy.Price} Nutrino Cells";
+        }
+    }
+
+
+    void Update()
+    {
+        Vector3 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 pos = transform.position;
+        pos.z = 0;
+        mouseWorldPos.z = 0;
+        Vector3 direction = (mouseWorldPos - pos).normalized;
+
+        angle = Vector3.Angle(Vector3.right, direction);
+        if (direction.y < 0)
+            angle *= -1.0f;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        angle *= Mathf.Deg2Rad;
+
+        updateStatsPanel();
+
+        if (gun is null)
+        {
+            weaponPanel.SetActive(false);
+            reloadPanel.SetActive(false);
+            return;
+        }
+
+        if (Input.GetButtonDown("Shoot") && !gun.IsReloading)
+        {
+            gun.beginShooting(angle);
+        }
+        if (Input.GetButtonUp("Shoot"))
+        {
+            gun.endShooting();
+        }
+        if (Input.GetButtonDown("Reload"))
+        {
+            gun.reload();
+        }
+
+        updateOtherPanels();
     }
     public void dropWeapon()
     {
@@ -100,6 +135,7 @@ public class PlayerArm : MonoBehaviour
             // Drop weapon
             gun.transform.SetParent(null, true);
             gun.attachTo(null);
+            Destroy(gun.gameObject);
             gun = null;
 
             reloadPanel.SetActive(false);
@@ -118,8 +154,19 @@ public class PlayerArm : MonoBehaviour
         weaponPanel.SetActive(true);
         weaponName.text = this.gun.GunName;
     }
+
+    public Gun getGun()
+    {
+        return gun;
+    }
+
     public float getAngle()
     {
         return angle;
+    }
+
+    public Player getPlayer()
+    {
+        return player;
     }
 }

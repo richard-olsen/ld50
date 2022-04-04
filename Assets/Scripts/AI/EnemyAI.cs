@@ -60,6 +60,18 @@ public abstract class EnemyAI : MonoBehaviour
         shouldChasePlayer = true;
     }
 
+    public void chaseSilo()
+    {
+        shouldChasePlayer = false;
+        NuclearSilo silo = pathfinder.getRandomSilo();
+        if (silo is null)
+        {
+            chasePlayer();
+            return;
+        }
+        goTo(pathfinder.getRandomSilo().transform.position);
+    }
+
     public void goTo(Vector2 pos)
     {
         path = pathfinder.findPath(TileX, TileY, Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));

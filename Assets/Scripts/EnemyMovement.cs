@@ -13,9 +13,12 @@ public class EnemyMovement : MonoBehaviour
 
     Vector2 targetMove;
 
+    private Animator animator;
+
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -32,6 +35,10 @@ public class EnemyMovement : MonoBehaviour
             movementDirection = (targetMove - body.position).normalized;
         }
         body.MovePosition(body.position + movementDirection * speed * Time.deltaTime);
+
+        animator.SetFloat("Dir X", Mathf.Abs(movementDirection.y) < 0.5f ? movementDirection.x : 0);
+        animator.SetFloat("Dir Y", movementDirection.y);
+        animator.SetFloat("Speed", movementDirection.magnitude > 0 ? 1.0f : 0.0f);
     }
 
     public bool isWithinTargetPosition()

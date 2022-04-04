@@ -34,6 +34,12 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     private float spread;               // The spread of bullets
 
+    [SerializeField]
+    private AudioSource sfxShot;
+    [SerializeField]
+    private AudioSource sfxReload;
+    [SerializeField]
+    private AudioSource sfxReloadFinished;
 
     [SerializeField]
     private int maxReserveAmmo;
@@ -50,7 +56,10 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField]
     private float reloadTime;
-    private float reloadTimer = 0;
+    private float reloadTimer = -1;
+    public bool IsReloading { get => reloadTimer >= 0; }
+
+    private float destroyTimer;
 
     protected void spawnProjectiles(float direction)
     {
@@ -64,6 +73,7 @@ public abstract class Gun : MonoBehaviour
             bullet.setDirection(new Vector2(Mathf.Cos(newDirection), Mathf.Sin(newDirection)));
             bullet.setDamage(damage);
         }
+        sfxShot.Play();
     }
 
     public abstract void beginShooting(float direction);
@@ -71,22 +81,26 @@ public abstract class Gun : MonoBehaviour
 
     public void reload()
     {
-        if (reloadTimer <= 0 && ammoInReserve > 0 && ammoInClip < maxClipAmmo)
+        if (reloadTimer < 0 && ammoInReserve > 0 && ammoInClip < maxClipAmmo)
+        {
             reloadTimer = reloadTime;
+            sfxReload.Play();
+        }
     }
 
     private void doReload()
     {
-        if (reloadTimer > 0 && ammoInReserve > 0)
+        if (reloadTimer >= 0 && ammoInReserve > 0)
         {
             reloadTimer -= Time.deltaTime;
 
-            if (reloadTimer <= 0)
+            if (reloadTimer < 0)
             {
                 int bulletsNeeded = maxClipAmmo - ammoInClip;
                 int count = Mathf.Min(bulletsNeeded, ammoInReserve);
                 ammoInReserve -= count;
                 ammoInClip += count;
+                sfxReloadFinished.Play();
             }
         }
     }
@@ -117,6 +131,13 @@ public abstract class Gun : MonoBehaviour
                 scale.y = 1.0f;
 
             sprite.transform.localScale = scale;
+        }
+        else
+        {
+            destroyTimer += Time.deltaTime;
+
+            if (destroyTimer >= 60.0f)
+                Destroy(gameObject);
         }
     }
 

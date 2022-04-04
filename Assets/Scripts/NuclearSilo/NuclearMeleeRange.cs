@@ -10,44 +10,24 @@ public class NuclearMeleeRange : MonoBehaviour
     [SerializeField]
     private UnityEvent weaponUpgradeEvent;
     [SerializeField]
-    private bool withinRange;
-    public bool WithinRange { get => withinRange; }
-    private WeaponUpgrade upgradeStation;
+    private bool isPlayerWithinRange;
 
     public void attackSilo(int damage)
     {
-
+        nuclearSilo.damage(damage);
     }
 
     //set vars for relevant collisions
-    private void OnCollisionEnter(Collision collision)
-    {
-        Player player = collision.gameObject.GetComponent<Player>();
-        upgradeStation = collision.gameObject.GetComponent<WeaponUpgrade>();
-        if (!(player is null))
-            withinRange = true;
-    }
-    private void OnCollisionExit(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
         if (!(player is null))
-        {
-            withinRange = false;
-        }
+            player.setNuclearSiloInRange(nuclearSilo);
     }
-
-    //call correct upgrade method for silo
-    public bool upgradeWeapon(Gun gun)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        Player player = gameObject.GetComponent<Player>();
-        if (withinRange)
-        {
-            if (!(upgradeStation is null))
-                upgradeStation.upgradeWeapon(gun);
-            return true;
-        }
-        else
-            return false;
-
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (!(player is null))
+            player.setNuclearSiloInRange(null);
     }
 }

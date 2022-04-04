@@ -25,7 +25,7 @@ public class SemiShot : Gun
 
     private IEnumerator fire()
     {
-        while (isShooting && IsLoaded)
+        while (isShooting && IsLoaded && !IsReloading)
         {
             for (int i = 0; i < 3; i++)
             {

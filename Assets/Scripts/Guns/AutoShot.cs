@@ -25,7 +25,7 @@ public class AutoShot : Gun
 
     private IEnumerator fire()
     {
-        while (isShooting && IsLoaded)
+        while (isShooting && IsLoaded && !IsReloading)
         {
             takeAmmo(1);
             spawnProjectiles(playerArm.getAngle());
