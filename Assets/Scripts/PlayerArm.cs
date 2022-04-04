@@ -101,8 +101,8 @@ public class PlayerArm : MonoBehaviour
         dropWeapon();
 
         this.gun = gun;
+        this.gun.transform.position = Vector3.zero;
         this.gun.transform.SetParent(gunOrigin, false);
-        this.gun.transform.localPosition = Vector3.zero;
         this.gun.attachTo(this);
 
         weaponPanel.SetActive(true);
