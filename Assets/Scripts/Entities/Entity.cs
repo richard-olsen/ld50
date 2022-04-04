@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public int hp = 0;
+    [SerializeField]
+    private int hp = 0;
 
     // Start is called before the first frame update
     void Start()

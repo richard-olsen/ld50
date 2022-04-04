@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NuclearSilo : MonoBehaviour
 {
-    public int hp = 500;
+    [SerializeField]
+    private int hp = 500;
     // Start is called before the first frame update
     void Start()
     {

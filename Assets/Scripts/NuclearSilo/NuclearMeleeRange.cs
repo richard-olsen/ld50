@@ -13,21 +13,23 @@ public class NuclearMeleeRange : MonoBehaviour
     private bool withinRange;
     public bool WithinRange { get => withinRange; }
     private WeaponUpgrade upgradeStation;
+    private NuclearSilo silo;
 
     public void attackSilo(int damage)
     {
-
+        silo.damage(damage);
     }
 
     //set vars for relevant collisions
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
         upgradeStation = collision.gameObject.GetComponent<WeaponUpgrade>();
+        silo = collision.gameObject.GetComponent<NuclearSilo>();
         if (!(player is null))
             withinRange = true;
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision collision)
     {
         Player player = collision.gameObject.GetComponent<Player>();
         if (!(player is null))

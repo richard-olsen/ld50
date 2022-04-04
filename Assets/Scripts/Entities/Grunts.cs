@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class Grunts : Entity
 {
-    private Animator anim;
-    public float attackTime;
-    public float startTimeAttack;
+    [SerializeField]
+    private Animator gruntAnimator;
+    [SerializeField]
+    private float attackTime;
+    [SerializeField]
+    private float startTimeAttack;
 
-    public Transform attackLocation;
-    public float attackRange;
-    public LayerMask player;
+    [SerializeField]
+    private Transform attackLocation;
+    [SerializeField]
+    private float attackRange;
+    [SerializeField]
+    private LayerMask player;
 
     // Start is called before the first frame update
     void Start()
     {
         giveHealth(3);
-        anim = GetComponent<Animator>();
+        gruntAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,14 +33,14 @@ public class Grunts : Entity
         {
             if (!(gameObject.GetComponent<Player>() is null) && Vector2.Distance(this.transform.position,gameObject.GetComponent<Player>().transform.position) < 1) //FIXME: distance comparison must be updated once we know length of weapon/arms
             {
-                anim.SetBool("Is_attacking", true);
+                gruntAnimator.SetBool("Is_attacking", true);
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
 
                 for (int i = 0; i < damage.Length; i++)
                 {
                     Player player = damage[i].gameObject.GetComponent<Player>();
                     if (!(player is null))
-                        player.damage(4);
+                        player.damage(2);
                 }
             }
             attackTime = startTimeAttack;
@@ -42,7 +48,7 @@ public class Grunts : Entity
         else
         {
             attackTime -= Time.deltaTime;
-            anim.SetBool("Is_attacking", false);
+            gruntAnimator.SetBool("Is_attacking", false);
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -52,21 +58,21 @@ public class Grunts : Entity
             NuclearMeleeRange attRange = collision.gameObject.GetComponent<NuclearMeleeRange>();
             if (!(attRange is null))
             {
-                anim.SetBool("Is_attacking", true);
+                gruntAnimator.SetBool("Is_attacking", true);
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange, player);
 
                 for (int i = 0; i < damage.Length; i++)
                 {
                     NuclearMeleeRange silo = damage[i].gameObject.GetComponent<NuclearMeleeRange>();
                     if (!(silo is null))
-                        silo.attackSilo(4);
+                        silo.attackSilo(2);
                 }
             }
         }
         else
         {
             attackTime -= Time.deltaTime;
-            anim.SetBool("Is_attacking", false);
+            gruntAnimator.SetBool("Is_attacking", false);
         }
     }
 }
