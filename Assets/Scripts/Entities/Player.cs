@@ -6,6 +6,8 @@ public class Player : Entity
 {
     [SerializeField]
     private PlayerArm playersArm;
+    [SerializeField]
+    private Animator playerAnimator;
 
     private NuclearSilo closestSilo;
     private WeaponBuy closestWeaponBuy;
