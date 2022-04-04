@@ -548,7 +548,7 @@ MonoBehaviour:
   gunName: SH52n
   fireRate: 0.35
   burstRate: 0
-  damage: 5
+  damage: 10
   bulletCount: 7
   spread: 30
   sfxShot: {fileID: 4796341039547183424}

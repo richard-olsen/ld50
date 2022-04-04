@@ -84,7 +84,7 @@ MonoBehaviour:
   gunName: P19n
   fireRate: 0.08
   burstRate: 0
-  damage: 1
+  damage: 2
   bulletCount: 1
   spread: 8
   sfxShot: {fileID: 2500083062510400930}

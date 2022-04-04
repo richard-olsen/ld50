@@ -84,7 +84,7 @@ MonoBehaviour:
   gunName: XRRSG
   fireRate: 0.01
   burstRate: 0
-  damage: 3
+  damage: 6
   bulletCount: 6
   spread: 30
   sfxShot: {fileID: 7276819374619721726}

@@ -7,5 +7,6 @@ public class WeaponUpgradeDamage : WeaponUpgrade
     public override void upgradeWeapon(Gun gun)
     {
         gun.upgradeDamage(upgradePercentage);
+        upgradeCost *= 2;
     }
 }

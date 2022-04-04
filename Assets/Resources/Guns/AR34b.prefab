@@ -548,7 +548,7 @@ MonoBehaviour:
   gunName: AR34b
   fireRate: 0.05
   burstRate: 0
-  damage: 4
+  damage: 8
   bulletCount: 1
   spread: 3
   sfxShot: {fileID: 5451812339287955914}

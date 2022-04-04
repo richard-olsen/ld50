@@ -211,7 +211,7 @@ MonoBehaviour:
   gunName: X2 Revolver
   fireRate: 0.01
   burstRate: 0
-  damage: 4
+  damage: 8
   bulletCount: 1
   spread: 10
   sfxShot: {fileID: 3526788856954877230}

@@ -14,7 +14,7 @@ public class Rounds : MonoBehaviour
     public int CurrentRound { get => currentRound; }
 
     private int baseGruntCount = 8; // 8 spawn on round 1, this is also used to variably increase
-    private int baseGruntHP = 2;
+    private int baseGruntHP = 4;
 
     private int gruntTargetSpawn = 0;
     private int gruntHP = 0;

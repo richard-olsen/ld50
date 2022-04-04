@@ -548,7 +548,7 @@ MonoBehaviour:
   gunName: SM20 Prototype
   fireRate: 0.07
   burstRate: 0.25
-  damage: 1
+  damage: 2
   bulletCount: 1
   spread: 11
   sfxShot: {fileID: 6514240194868028850}
