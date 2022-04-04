@@ -56,6 +56,11 @@ public class Player : Entity
         closestWeaponBuy = weaponBuy;
     }
 
+    public Gun getGun()
+    {
+        return playersArm.getGun();
+    }
+
     public void playNutrinoPickup()
     {
         nutrinoPickupSFX.Play();

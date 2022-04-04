@@ -68,6 +68,7 @@ public class Rounds : MonoBehaviour
 
             grunt.transform.position = spawnLocation.position + new Vector3(Mathf.Cos(rad) * dist, Mathf.Sin(rad) * dist, 0);
             grunt.setHP(gruntHP);
+            grunt.giveNutrinoCell(Random.Range(currentRound * 3, (int)(currentRound * 3.5f)));
             grunts.Add(grunt);
             totalGruntsSpawned++;
 
@@ -161,7 +162,6 @@ public class Rounds : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
             startNewRound();
-    
         if (roundOver)
         {
             startNewRound();
