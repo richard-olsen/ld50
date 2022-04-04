@@ -12,7 +12,7 @@ public class Player : Entity
     {
         giveHealth(20);
 
-        GameObject gun = GameObject.Instantiate(Resources.Load<GameObject>("SingleShotReference"));
+        GameObject gun = GameObject.Instantiate(Resources.Load<GameObject>("Guns/XRRSG"));
         giveWeapon(gun.GetComponent<Gun>());
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerArm : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class PlayerArm : MonoBehaviour
 
     [SerializeField]
     private Transform gunOrigin;
+
+    [SerializeField]
+    private GameObject weaponPanel;
+    [SerializeField]
+    private Text weaponName;
+    [SerializeField]
+    private Text weaponAmmo;
+    [SerializeField]
+    private GameObject reloadPanel;
 
     private float angle;
 
@@ -37,27 +47,41 @@ public class PlayerArm : MonoBehaviour
 
         angle *= Mathf.Deg2Rad;
 
+        if (gun is null)
+        {
+            weaponPanel.SetActive(false);
+            reloadPanel.SetActive(false);
+            return;
+        }
+
         if (Input.GetButtonDown("Shoot"))
         {
-            if (!(gun is null))
-            {
-                gun.beginShooting(angle);
-            }
+            gun.beginShooting(angle);
         }
         if (Input.GetButtonUp("Shoot"))
         {
-            if (!(gun is null))
-            {
-                gun.endShooting();
-            }
+            gun.endShooting();
         }
         if (Input.GetButtonDown("Reload"))
         {
-            if (!(gun is null))
-            {
-                gun.reload();
-            }
+            gun.reload();
         }
+
+        if (gun.AmmoClip == 0)
+        {
+            reloadPanel.SetActive(true);
+        }
+        else if (gun.AmmoClip < (int)(gun.MaxClipAmmo * 0.25f))
+        {
+            weaponAmmo.color = Color.red;
+        }
+        else
+        {
+            reloadPanel.SetActive(false);
+            weaponAmmo.color = Color.black;
+        }
+
+        weaponAmmo.text = $"{gun.AmmoClip} / {gun.AmmoReserve}";
     }
     public void dropWeapon()
     {
@@ -67,6 +91,9 @@ public class PlayerArm : MonoBehaviour
             gun.transform.SetParent(null, true);
             gun.attachTo(null);
             gun = null;
+
+            reloadPanel.SetActive(false);
+            weaponPanel.SetActive(false);
         }
     }
     public void giveWeapon(Gun gun)
@@ -75,7 +102,11 @@ public class PlayerArm : MonoBehaviour
 
         this.gun = gun;
         this.gun.transform.SetParent(gunOrigin, false);
+        this.gun.transform.localPosition = Vector3.zero;
         this.gun.attachTo(this);
+
+        weaponPanel.SetActive(true);
+        weaponName.text = this.gun.GunName;
     }
     public float getAngle()
     {

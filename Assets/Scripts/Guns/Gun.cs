@@ -12,6 +12,13 @@ public abstract class Gun : MonoBehaviour
     protected PlayerArm playerArm;
 
     [SerializeField]
+    private Transform sprite;
+
+    [SerializeField]
+    private string gunName;
+    public string GunName { get => gunName; }
+
+    [SerializeField]
     private float fireRate;
     public float FireRate { get => fireRate; }
     [SerializeField]
@@ -38,6 +45,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     private int ammoInReserve;
     public bool IsLoaded { get => ammoInClip > 0; }
+    public int AmmoClip { get => ammoInClip; }
+    public int AmmoReserve { get => ammoInReserve; }
 
     [SerializeField]
     private float reloadTime;
@@ -94,6 +103,20 @@ public abstract class Gun : MonoBehaviour
     void Update()
     {
         doReload();
+
+        if (!(playerArm is null))
+        {
+            float angle = playerArm.getAngle();
+
+            Vector3 scale = sprite.transform.localScale;
+
+            if (angle > 90 * Mathf.Deg2Rad || angle < -90 * Mathf.Deg2Rad)
+                scale.y = -1.0f;
+            else
+                scale.y = 1.0f;
+
+            sprite.transform.localScale = scale;
+        }
     }
 
     //weapon upgrades, int values round down via truncation, percentage parameter is percentage of improvement

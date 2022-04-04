@@ -81,16 +81,16 @@ public abstract class EnemyAI : MonoBehaviour
             path.RemoveAt(0);
         }
         // Keep just in case pathfinding needs debugging again
-        if (!(path is null) && path.Count > 0)
-        {
-            PathNode lastNode = path[path.Count - 1];
+        //if (!(path is null) && path.Count > 0)
+        //{
+        //    PathNode lastNode = path[path.Count - 1];
 
-            while (!(lastNode.previousNode is null))
-            {
-                Debug.DrawLine(toCoordinate(lastNode), toCoordinate(lastNode.previousNode));
-                lastNode = lastNode.previousNode;
-            }
-        }
+        //    while (!(lastNode.previousNode is null))
+        //    {
+        //        Debug.DrawLine(toCoordinate(lastNode), toCoordinate(lastNode.previousNode));
+        //        lastNode = lastNode.previousNode;
+        //    }
+        //}
     }
 
     protected abstract void execute(State state);
